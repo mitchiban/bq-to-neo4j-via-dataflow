@@ -172,3 +172,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+/home/mitch/Projects/proj_128_onto_learnings/GCP_Dataflow/bq-to-neo4j-via-dataflow/datasets/templates/neo4j-connection.json
