@@ -7,8 +7,7 @@
     {
         "type": "text",
         "name": "stations",
-        "uri": "gs://bkt-bq-to-neo4j-dataflow/csv-files/London_stations.csv",
-
+        "uri": "gs://bkt-bq-to-neo4j-dataflow/csv-files/london_transport/London_stations.csv",
         "format": "EXCEL",
         "delimiter": ",",
         "ordered_field_names": "ID,Station_Name,OS X,OS Y,Latitude,Longitude,Zone,Postcode,Zone_original"
@@ -16,7 +15,7 @@
     {
         "type": "text",
         "name": "tube_lines",
-        "uri:": "gs://bkt-bq-to-neo4j-dataflow/csv-files/London_tube_lines.csv",
+        "uri:": "gs://bkt-bq-to-neo4j-dataflow/csv-files/london_transport/London_tube_lines.csv",
         "format": "EXCEL",
         "delimiter": ",",
         "ordered_field_names": "Tube_Line,From_Station,To_Station"
