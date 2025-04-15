@@ -1,0 +1,49 @@
+{
+  "config": {
+    "reset_db": true,
+    "index_all_properties": false
+  },
+  "sources": [
+    {
+        "type": "bigquery",
+        "name": "stations",
+        "query": "SELECT geo_point_2d, geo_shape, he_loop, lift, pids, station, SPLIT(geo_point_2d, ',')[OFFSET(0)] AS Latitude,SPLIT(geo_point_2d, ',')[OFFSET(1)] AS Longitude FROM `bq-to-neo4j-dataflow.melbourne_metro.melbourne_stations` "
+    }
+  ],
+  "targets": [
+    {
+      "node": {
+        "source": "stations",
+        "name": "Station",
+        "mode": "append",
+        "schema": {
+          "key_constraints": [
+            ["Station_Name"]
+          ]
+        },
+        "transform": {
+          "group": true
+        },
+        "mappings": {
+          "labels": [
+            "\"Station\""
+          ],
+          "properties": {
+            "strings": [
+              {"Station_Name": "station"},
+              {"Lift - Access": "lift"},
+              {"He_loop": "he_loop"},
+              {"geo_shape": "geo_shape"}
+            ],
+            "unique": [],
+            "floats": [
+              {"Longitude": "Longitude"},
+              {"Latitude": "Latitude"}
+            ]
+          }
+        }
+      }
+    }
+
+  ]
+}
